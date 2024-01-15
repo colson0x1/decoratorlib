@@ -84,6 +84,14 @@ function Log3(
   return {};
 }
 
+/* @ Decorators on Parameter */
+function Log4(target: any, name: string | Symbol, position: number) {
+  console.log('Parameter decorator!');
+  console.log(target);
+  console.log(name);
+  console.log(position);
+}
+
 class Product {
   @Log
   title: string;
@@ -97,7 +105,7 @@ class Product {
   }
 
   @Log3
-  getPriceWithTax(tax: number) {
+  getPriceWithTax(@Log4 tax: number) {
     return this._price * (1 + tax);
   }
 
