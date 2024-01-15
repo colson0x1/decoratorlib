@@ -69,6 +69,21 @@ function Log2(target: any, name: string, descriptor: PropertyDescriptor) {
   console.log(descriptor);
 }
 
+/* @ Decorators on Methods */
+function Log3(
+  target: any,
+  name: string | Symbol,
+  descriptor: PropertyDescriptor,
+) {
+  console.log('Method decorator!');
+  console.log(target);
+  console.log(name);
+  console.log(descriptor);
+
+  // Returning new descriptor object in the end
+  return {};
+}
+
 class Product {
   @Log
   title: string;
@@ -81,6 +96,7 @@ class Product {
     }
   }
 
+  @Log3
   getPriceWithTax(tax: number) {
     return this._price * (1 + tax);
   }

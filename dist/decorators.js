@@ -63,6 +63,15 @@ function Log2(target, name, descriptor) {
     console.log(name);
     console.log(descriptor);
 }
+/* @ Decorators on Methods */
+function Log3(target, name, descriptor) {
+    console.log('Method decorator!');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+    // Returning new descriptor object in the end
+    return {};
+}
 class Product {
     set price(val) {
         if (val > 0) {
@@ -83,5 +92,8 @@ __decorate([
 __decorate([
     Log2
 ], Product.prototype, "price", null);
+__decorate([
+    Log3
+], Product.prototype, "getPriceWithTax", null);
 const product1 = new Product('Hoodie', 399);
 const product2 = new Product('Book', 39);
