@@ -51,6 +51,18 @@ Person = __decorate([
 const person = new Person();
 console.log('lmaooo', person);
 /* @ Decorator Uses */
+/* @ Decorators on Properties */
+function Log(target, propertyName) {
+    console.log('Property decorator!');
+    console.log(target, propertyName);
+}
+/* @ Decorators on Accessors  */
+function Log2(target, name, descriptor) {
+    console.log('Accessor decorator!');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
 class Product {
     set price(val) {
         if (val > 0) {
@@ -65,5 +77,11 @@ class Product {
         this._price = p;
     }
 }
+__decorate([
+    Log
+], Product.prototype, "title", void 0);
+__decorate([
+    Log2
+], Product.prototype, "price", null);
 const product1 = new Product('Hoodie', 399);
 const product2 = new Product('Book', 39);
