@@ -39,8 +39,8 @@ function WithTemplate(template: string, hookId: string) {
   };
 }
 
-@WithTemplate('<h1>My person object</h1>', 'root')
 @Logger('nigga logged decorator @LOGGER')
+@WithTemplate('<h1>My person object</h1>', 'root')
 class Person {
   name = 'ROLLS ROYCE';
 
@@ -52,3 +52,28 @@ class Person {
 
 const person = new Person();
 console.log('lmaooo', person);
+
+/* @ Decorator Uses */
+
+class Product {
+  title: string;
+  private _price: number;
+
+  set price(val: number) {
+    if (val > 0) {
+      this._price = val;
+    }
+  }
+
+  getPriceWithTax(tax: number) {
+    return this._price * (1 + tax);
+  }
+
+  constructor(t: string, p: number) {
+    this.title = t;
+    this._price = p;
+  }
+}
+
+const product1 = new Product('Hoodie', 399);
+const product2 = new Product('Book', 39);

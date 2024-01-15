@@ -45,8 +45,25 @@ let Person = class Person {
     }
 };
 Person = __decorate([
-    WithTemplate('<h1>My person object</h1>', 'root'),
-    Logger('nigga logged decorator @LOGGER')
+    Logger('nigga logged decorator @LOGGER'),
+    WithTemplate('<h1>My person object</h1>', 'root')
 ], Person);
 const person = new Person();
 console.log('lmaooo', person);
+/* @ Decorator Uses */
+class Product {
+    set price(val) {
+        if (val > 0) {
+            this._price = val;
+        }
+    }
+    getPriceWithTax(tax) {
+        return this._price * (1 + tax);
+    }
+    constructor(t, p) {
+        this.title = t;
+        this._price = p;
+    }
+}
+const product1 = new Product('Hoodie', 399);
+const product2 = new Product('Book', 39);
